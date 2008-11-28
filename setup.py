@@ -3,14 +3,13 @@ import sys, os
 
 version = '0.1.27'
 
+README = os.path.join(os.path.dirname(__file__), 'README.txt')
+long_description = open(README).read().strip() + "\n\n"
+
 setup(name='slimmer',
       version=version,
       description="HTML,XHTML,CSS,JavaScript optimizer",
-      long_description="""\
-slimmer.py
----------------------
-
-Can slim (X)HTML, CSS and Javascript files to become smaller""",
+      long_description=long_description,
       keywords='slimmer optimizer optimiser whitespace',
       author='Peter Bengtsson',
       author_email='peter@fry-it.com',
