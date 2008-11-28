@@ -123,9 +123,6 @@ class SlimmerTestCase(unittest.TestCase):
     def testCSS3c(self):
         before = CSS_3c
         expect = expect_CSS_3c
-        print "XXXXXXXXXX"
-        print repr(slimmer.css_slimmer(before))
-        print slimmer.guessSyntax(before)
         self.atest(before, expect, "CSS3c", slimmer.css_slimmer)
         
     def testCSS4(self):
@@ -187,6 +184,12 @@ class SlimmerTestCase(unittest.TestCase):
         before = HTML_8
         expect = expect_HTML_8
         self.atest(before, expect, "HTML8", slimmer.html_slimmer)
+        
+    def testHTML9(self):
+        """ UTF-8 characters in the HTML """
+        before = HTML_9
+        expect = expect_HTML_9
+        self.atest(before, expect, "HTML9", slimmer.html_slimmer)        
         
     def testJS1(self):
         before = JS_1

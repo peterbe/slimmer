@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*
+
 CSS_1 = '''
 /* Comment 1 */
 div#main { 
@@ -281,6 +283,26 @@ HTML_8=u'''
 '''
 
 expect_HTML_8=u'''
+<html><style> *{color:#000;background-color:#fc9}</style><body><div style="color:#CCCCCC; background-color: #ee99cc">Pay with \xa3</div></body></html>
+'''
+
+
+#----------------------------------------------------------------------------
+
+HTML_9=u'''
+<html>
+  <style>
+  * { color:#000000; 
+      background-color:#ffcc99 ;
+    }
+  </style>
+  <body>
+    <div style="color:#CCCCCC; background-color: #ee99cc">Pay with \xa3</div>
+  </body>
+</html>
+'''
+
+expect_HTML_9=u'''
 <html><style> *{color:#000;background-color:#fc9}</style><body><div style="color:#CCCCCC; background-color: #ee99cc">Pay with \xa3</div></body></html>
 '''
 

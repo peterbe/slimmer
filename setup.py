@@ -6,6 +6,7 @@ version = '0.1.27'
 README = os.path.join(os.path.dirname(__file__), 'README.txt')
 long_description = open(README).read().strip() + "\n\n"
 
+
 setup(name='slimmer',
       version=version,
       description="HTML,XHTML,CSS,JavaScript optimizer",
