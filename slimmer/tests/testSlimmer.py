@@ -1,5 +1,6 @@
 from time import time
 import unittest
+import codecs
 
 import sys
 sys.path.insert(0,'../')
@@ -282,7 +283,23 @@ class SlimmerTestCase(unittest.TestCase):
     def testJS16(self):
         before = JS_16
         expect = expect_JS_16
-        self.atest(before, expect, "JS16", slimmer.js_slimmer)        
+        self.atest(before, expect, "JS16", slimmer.js_slimmer)
+        
+        
+    def testUnicodeHTML1(self):
+        before = codecs.open('euc-jp.html','r','euc-jp').read()
+        assert isinstance(before, unicode)
+        after = slimmer.html_slimmer(before)
+        assert isinstance(after, unicode)
+        
+    def testUnicodeHTML2(self):
+        before = codecs.open('utf-8.html','r','utf-8').read()
+        assert isinstance(before, unicode)
+        after = slimmer.html_slimmer(before)
+        assert isinstance(after, unicode)
+        expect = u'<html><p>\u0e2a\u0e27\u0e31\u0e2a\u0e14\u0e35\u0e04\u0e23\u0e31\u0e1a</p></html>'
+        assert after == expect
+        
 
 def suite():
     return unittest.makeSuite(SlimmerTestCase)
