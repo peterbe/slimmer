@@ -1,3 +1,4 @@
+import os
 from time import time
 import unittest
 import codecs
@@ -287,13 +288,17 @@ class SlimmerTestCase(unittest.TestCase):
         
         
     def testUnicodeHTML1(self):
-        before = codecs.open('euc-jp.html','r','euc-jp').read()
+        here = os.path.dirname(__file__)
+        before = codecs.open(os.path.join(here, 'euc-jp.html'),
+                             'r','euc-jp').read()
         assert isinstance(before, unicode)
         after = slimmer.html_slimmer(before)
         assert isinstance(after, unicode)
         
     def testUnicodeHTML2(self):
-        before = codecs.open('utf-8.html','r','utf-8').read()
+        here = os.path.dirname(__file__)
+        before = codecs.open(os.path.join(here, 'utf-8.html'),
+                             'r','utf-8').read()
         assert isinstance(before, unicode)
         after = slimmer.html_slimmer(before)
         assert isinstance(after, unicode)

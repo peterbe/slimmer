@@ -1,7 +1,8 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.1.27'
+import slimmer
+version = slimmer.__version__ # hate repeating myself
 
 README = os.path.join(os.path.dirname(__file__), 'README.txt')
 long_description = open(README).read().strip() + "\n\n"

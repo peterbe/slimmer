@@ -21,6 +21,8 @@
  
 
 Changes::
+ 0.1.28     Nov 2008    Added some tests that tests UTF-8 and EUC-JP HTML
+ 
  0.1.27     Nov 2008    As a new distutils package
  
  0.1.26     Oct 2007    Minor improvement to js_slimmer for 'var x = [...]'
@@ -95,7 +97,7 @@ Changes::
  0.1.0      Sep 2004    First version numbering
 """
 
-__version__='0.1.27'
+__version__='0.1.28'
 __all__=['acceptableSyntax','guessSyntax','slimmer','css_slimmer',
          'html_slimmer','xhtml_slimmer','js_slimmer',
          '__version__']

@@ -1,7 +1,12 @@
 slimmer.py is a whitespace optimizer for CSS, HTML and XHTML output.
-It's written by Peter Bengtsson, peter@fry-it.com in 2004-2005.
+It's written by Peter Bengtsson, peter@fry-it.com in 2004-2005. Still
+maintained in 2008.
 
 INSTALLATION::
+
+ $ sudo easy_install slimmer
+ 
+Alternative::
 
  $ tar -zxvf slimmer-x.x.x.tgz
  $ cd slimmer/
@@ -24,4 +29,5 @@ UNITTESTS::
 
  $ cd slimmer/tests
  $ python testSlimmer.py
+ $ python testSlimmer.py --verbose 
  
