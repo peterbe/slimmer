@@ -101,6 +101,18 @@ class SlimmerTestCase(unittest.TestCase):
             else:
                 continue
             
+    def testGuessHTMLorXHTML(self):
+        code = """<ul>
+        <li>One</li>
+        <li>Two</li>
+        </ul>"""
+        self.assertEqual(slimmer.guessSyntax(code), 'html')
+        
+        code = """
+        <a href="foo.html"><img src="foo.jpg" /></a>
+        """
+        self.assertEqual(slimmer.guessSyntax(code), 'xhtml')
+            
     
     def testCSS1(self):
         before = CSS_1

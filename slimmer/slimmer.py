@@ -21,6 +21,10 @@
  
 
 Changes::
+ 0.1.30     Nov 2009    Better at guessing HTML or XHTML
+ 
+ 0.1.29     Nov 2008    New distutils release
+ 
  0.1.28     Nov 2008    Added some tests that tests UTF-8 and EUC-JP HTML
  
  0.1.27     Nov 2008    As a new distutils package
@@ -97,7 +101,7 @@ Changes::
  0.1.0      Sep 2004    First version numbering
 """
 
-__version__='0.1.28'
+__version__='0.1.30'
 __all__=['acceptableSyntax','guessSyntax','slimmer','css_slimmer',
          'html_slimmer','xhtml_slimmer','js_slimmer',
          '__version__']
@@ -150,14 +154,21 @@ some_html_code_regex = re.compile('|'.join([re.escape(x) for x in _html_doctypes
                                   '|<table|background=\"|<script|border=0|<!--', re.I)
 def guessSyntax(code):
     code = code.strip()
-    if some_xhtml_code_regex.findall(code):
-        return XHTML
-    elif some_html_code_regex.findall(code):
+    if some_html_code_regex.findall(code):
         return HTML
+    elif some_xhtml_code_regex.findall(code):
+        return XHTML
     elif some_javascript_code_regex.findall(code):
         return JS
     elif some_css_code_regex.findall(code):
         return CSS
+    else:
+        # getting desperate but we shall prevail!
+        if '</' in code:
+            if '/>' in code or '/ >' in code:
+                return XHTML
+            return HTML
+            
     return None
 
 def slimmer(code, syntax=XHTML, hardcore=False):
@@ -337,7 +348,7 @@ def _js_slimmer(js, slim_functions=False):
         else:
             return match.group()
     js = js_comments_singlelines.sub(_reject_slashslash_comment, js)
-    _='''
+    _="""
     for comment, start in js_comments_singlelines2.findall(js):
         # ...except those that contain -->
         replacewith = ''
@@ -345,7 +356,7 @@ def _js_slimmer(js, slim_functions=False):
             replacewith = ';'
         if not js_comment_end.findall(comment):
             js = js.replace(comment, replacewith)
-    '''
+    """
 
     js = js_comment_start.sub(r'<!--\n\3', js)
     
