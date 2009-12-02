@@ -42,3 +42,10 @@ setup(name='slimmer',
       # -*- Entry points: -*-
       """,
       )
+
+
+# NOTE TO SELF
+# To upload to PyPi:
+#
+# python setup.py sdist upload
+#

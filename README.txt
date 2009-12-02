@@ -1,6 +1,6 @@
 slimmer.py is a whitespace optimizer for CSS, HTML and XHTML output.
-It's written by Peter Bengtsson, peter@fry-it.com in 2004-2005. Still
-maintained in 2008.
+It's written by Peter Bengtsson, peter@fry-it.com in 2004-2009. Still
+maintained in 2009.
 
 INSTALLATION::
 
