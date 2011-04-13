@@ -21,6 +21,8 @@
  
 
 Changes::
+ 0.1.31     Apr 2011    Added ability to strip off multiline comments in HTML
+
  0.1.30     Nov 2009    Better at guessing HTML or XHTML
  
  0.1.29     Nov 2008    New distutils release
@@ -101,7 +103,7 @@ Changes::
  0.1.0      Sep 2004    First version numbering
 """
 
-__version__='0.1.30'
+__version__='0.1.31'
 __all__=['acceptableSyntax','guessSyntax','slimmer','css_slimmer',
          'html_slimmer','xhtml_slimmer','js_slimmer',
          '__version__']
@@ -241,7 +243,7 @@ f_M = re.MULTILINE
 # the comment has to start with a space or a charater 
 # otherwise me might remove a SSI include which can look like this:
 #  <!--#include virtual="/include/myinclude.asp"-->
-html_comments_oneline = re.compile(r'<!--[\w\s].*?-->', re.I) 
+html_comments = re.compile(r'<!--[\w\s].*?-->(?!\s*</script>|\s*</style>)', re.I | re.S)
 
 html_inline_css = re.compile(r'<style.*?>.*?</style>', f_IMD)
 html_inline_js = re.compile(r'<script.*?>.*?</script>', f_IMD)
@@ -270,7 +272,7 @@ def _html_slimmer(html, xml=0):
     html = re.sub(r'>\s+<','><', html)
     
     # 3. Remove oneline comments
-    html = html_comments_oneline.sub('', html)
+    html = html_comments.sub('', html)
     
     # 4. In every tag, remove quotes on numerical attributes and all
     # excessive whitespace

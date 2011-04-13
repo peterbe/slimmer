@@ -185,8 +185,7 @@ function foo() {
 expect_HTML_2='''
 <a href="x" width="100%" border='0'>Pointless         extra
  
-space</a><!-- two line
-comment --><script language="Javascript"><!--
+space</a><script language="Javascript"><!--
 function foo(){alert("Hell");}
 //--></script>
 '''
