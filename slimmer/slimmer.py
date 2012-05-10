@@ -232,6 +232,17 @@ def _css_slimmer(css):
     # removed. Put it back (http://real.issuetrackerproduct.com/0168)
     css = re.sub(r'voice-family:"\\"}\\""', r'voice-family: "\\"}\\""', css)
     
+    # MS quoted hex colors replacement. 
+    # Things like 
+    # filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff',endColorstr='#e7e7e7',GradientType=0 );
+    # Are not the same as
+    # filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff',endColorstr='#e7e7e7',GradientType=0 );
+    # because they're value inputs and #FFF is blue-green and #FFFFFF is white. 
+    # Put back the full value that slimmer stirpped out when hex is quoted 
+    # Per https://github.com/peterbe/slimmer/issues/2#issuecomment-5628053
+    # Added by Jacques Favreau (@j_favreau) May 10th 2012
+    css = re.sub(r'(["\'])#(\w\w\w)(["\'])', r'\1#\2\2\3', css)
+    
     return css.strip()
 
 

@@ -157,7 +157,12 @@ class SlimmerTestCase(unittest.TestCase):
     def testCSS7(self):
         before = CSS_7
         expect = expect_CSS_7
-        self.atest(before, expect, "CSS6", slimmer.css_slimmer)    
+        self.atest(before, expect, "CSS7", slimmer.css_slimmer)
+    
+    def testCSS8(self):
+        before = CSS_8
+        expect = expect_CSS_8
+        self.atest(before, expect, "CSS8", slimmer.css_slimmer)    
 
     def testHTML1(self):
         before = HTML_1
