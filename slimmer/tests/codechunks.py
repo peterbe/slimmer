@@ -133,7 +133,19 @@ expect_CSS_7 = r'''
 '''
 
 #----------------------------------------------------------------------------
+CSS_8 = r'''
+div {
+height: 10px;
+background: #ffffff;
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5c5c5', endColorstr='#ffffff',GradientType=0 );
+}
+'''
 
+expect_CSS_8 = r'''
+div{height:10px;background:#fff;filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5c5c5',endColorstr='#ffffff',GradientType=0 )}
+'''
+
+#----------------------------------------------------------------------------
 HTML_1='''
 <img src="a.gif" width="100" width="100" height='100' border=0>
 <STYLE type="text/css">
