@@ -1,3 +1,6 @@
+THIS PROJECT IS NO LONGER MAINTAINED. THERE ARE MUCH BETTER TOOLS TO ACHIEVE THE SAME THING. LIKE [UGLIFY-JS](https://github.com/mishoo/UglifyJS2) or [CSSMIN](https://www.npmjs.com/package/cssmin).
+
+
 slimmer.py is a whitespace optimizer for CSS, Javascript, HTML and XHTML output.
 It's written by Peter Bengtsson, peter@fry-it.com in 2004-2009. Still
 maintained in 2010.
